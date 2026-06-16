@@ -1,0 +1,15 @@
+{
+    "validuser" : "standard_user",
+    "validpasswor": "secret_sauce",
+    "lockeduser": "lock_out_user",
+    "invaliduser": "wrong_user",
+    "products":{
+        "backpack": "sauce-labs-backpack",
+        "bikelight" : "sauce-labs-back-light"
+    },
+    "coustomerdetails":{
+        "fname" : "standard_user",
+        "lname" : "press",
+        "zipcode" : "123455"
+    }
+}
