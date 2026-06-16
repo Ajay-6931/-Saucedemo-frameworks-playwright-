@@ -139,6 +139,18 @@ test.describe('checkout flow  process validation' , async() => {
     });
 
     test('tc15: form validation required if first name i missing' , async() => {
-        await CheckoutPage.lastname.fill(testdata.
+        await CheckoutPage.lastname.fill(testdata.coustomerdetails.lname);
+        await CheckoutPage.zipcode.fill(testdata.coustomerdetails.zipcode);
+        await CheckoutPage.continueButton.click();
+        await expect(CheckoutPage.page.locator('[data-test="error"]')).toHaveText(/Error: first name is required/);
+
+    });
+
+    test('tc17: complete dilvery validation maps to review step two' , async ({page}) => {
+        await CheckoutPage.fillcoustomerinfo(testdata.coustomerdetails.fname,testdata.coustomerdetails.lname,testdata.coustomerdetails.zipcode);
+        await expect(page).toHaveURL('/checkout-step-two.tml');
     });
     });
+
+    // now new test case
+    
