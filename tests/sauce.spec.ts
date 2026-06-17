@@ -158,13 +158,13 @@ test.describe('checkout flow  process validation' , async() => {
          await expect(CheckoutPage.summarytotal).toContainText('Total: $');
     });
 
-    test ('successful oder confirmation' , async () =>{
+    test ('tc19: successful oder confirmation' , async () =>{
          await CheckoutPage.fillcoustomerinfo(testdata.coustomerdetails.fname,testdata.coustomerdetails.lname,testdata.coustomerdetails.zipcode);
          await CheckoutPage.clickfinish();
          await expect(CheckoutPage.completeheader).toHaveText('Thank you for your order!');
     });
 
-    test (' after order configration go back to product page' , async({page}){
+    test ('tc20 : after order configration go back to product page' , async({page}){
 
          await CheckoutPage.fillcoustomerinfo(testdata.coustomerdetails.fname,testdata.coustomerdetails.lname,testdata.coustomerdetails.zipcode);
          await CheckoutPage.clickfinish();
