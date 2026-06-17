@@ -150,7 +150,25 @@ test.describe('checkout flow  process validation' , async() => {
         await CheckoutPage.fillcoustomerinfo(testdata.coustomerdetails.fname,testdata.coustomerdetails.lname,testdata.coustomerdetails.zipcode);
         await expect(page).toHaveURL('/checkout-step-two.tml');
     });
+
+
+    test ('tc18: financal total price calculatiuon summary deatils prsence verfication' , async () =>{
+         await CheckoutPage.fillcoustomerinfo(testdata.coustomerdetails.fname,testdata.coustomerdetails.lname,testdata.coustomerdetails.zipcode);
+         await expect(CheckoutPage.summarytotal).toBeVisible();
+         await expect(CheckoutPage.summarytotal).toContainText('Total: $');
     });
 
-    // now new test case
-    
+    test ('successful oder confirmation' , async () =>{
+         await CheckoutPage.fillcoustomerinfo(testdata.coustomerdetails.fname,testdata.coustomerdetails.lname,testdata.coustomerdetails.zipcode);
+         await CheckoutPage.clickfinish();
+         await expect(CheckoutPage.completeheader).toHaveText('Thank you for your order!');
+    });
+
+    test (' after order configration go back to product page' , async({page}){
+
+         await CheckoutPage.fillcoustomerinfo(testdata.coustomerdetails.fname,testdata.coustomerdetails.lname,testdata.coustomerdetails.zipcode);
+         await CheckoutPage.clickfinish();
+         await page.locator('[data-test="back-to-products"]').click();
+         await expect(page).toHaveURL('/inventory.html');
+            });
+    });
